@@ -1,0 +1,103 @@
+#Lista de Tarefas (To-Do List) Simples
+
+import json
+
+def carregar_tarefas():
+    try:
+        with open('tarefas.json', 'r') as arquivo:
+            return json.load(arquivo)
+    except FileNotFoundError:
+        return []
+
+def salvar_tarefas(tarefas):
+    with open('tarefas.json', 'w') as arquivo:
+        json.dump(tarefas, arquivo)
+
+def adicionar_tarefa(tarefas):
+    nome = input("Digite o nome da tarefa: ")
+    tarefa = {"nome": nome, "concluida": False}
+    tarefas.append(tarefa)
+    salvar_tarefas(tarefas)
+    print(f"Tarefa '{nome}' adicionada com sucesso!")
+
+def visualizar_tarefas(tarefas):
+    if not tarefas:
+        print("Nenhuma tarefa na lista.")
+        return
+    
+    print("\nLista de Tarefas:")
+    for i, tarefa in enumerate(tarefas, 1):
+        status = "✓" if tarefa["concluida"] else " "
+        print(f"{i}. [{status}] {tarefa['nome']}")
+    print()
+
+def remover_tarefa(tarefas):
+    visualizar_tarefas(tarefas)
+    if not tarefas:
+        return
+    
+    try:
+        opcao = input("Digite o número da tarefa a remover ou 'C' para cancelar: ")
+        if opcao.upper() == 'C':
+            return
+        
+        indice = int(opcao) - 1
+        if 0 <= indice < len(tarefas):
+            tarefa_removida = tarefas.pop(indice)
+            salvar_tarefas(tarefas)
+            print(f"Tarefa '{tarefa_removida['nome']}' removida!")
+        else:
+            print("Índice inválido!")
+    except ValueError:
+        print("Por favor, digite um número válido.")
+
+def marcar_concluida(tarefas):
+    visualizar_tarefas(tarefas)
+    if not tarefas:
+        return
+    
+    try:
+        opcao = input("Digite o número da tarefa concluída ou 'C' para cancelar: ")
+        if opcao.upper() == 'C':
+            return
+        
+        indice = int(opcao) - 1
+        if 0 <= indice < len(tarefas):
+            tarefas[indice]["concluida"] = not tarefas[indice]["concluida"]
+            salvar_tarefas(tarefas)
+            status = "concluída" if tarefas[indice]["concluida"] else "pendente"
+            print(f"Tarefa '{tarefas[indice]['nome']}' marcada como {status}!")
+        else:
+            print("Índice inválido!")
+    except ValueError:
+        print("Por favor, digite um número válido.")
+
+def menu():
+    tarefas = carregar_tarefas()
+    
+    while True:
+        print("\n--- MENU ---")
+        print("1. Adicionar tarefa")
+        print("2. Visualizar tarefas")
+        print("3. Remover tarefa")
+        print("4. Marcar/desmarcar como concluída")
+        print("5. Sair")
+        
+        opcao = input("Escolha uma opção: ")
+        
+        if opcao == '1':
+            adicionar_tarefa(tarefas)
+        elif opcao == '2':
+            visualizar_tarefas(tarefas)
+        elif opcao == '3':
+            remover_tarefa(tarefas)
+        elif opcao == '4':
+            marcar_concluida(tarefas)
+        elif opcao == '5':
+            print("Saindo do programa...")
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
+
+if __name__ == "__main__":
+    menu()
