@@ -1,28 +1,13 @@
 # Algoritmos_e_Estrutura_de_dados_BICT_2025
-import unicodedata
 
-def remover_acentos(texto):
-    # Normaliza o texto para a forma NFD (decomposição de caracteres acentuados)
-    texto_normalizado = unicodedata.normalize('NFD', texto)
-    # Remove os caracteres de acentuação (tudo que não for ASCII)
-    texto_sem_acentos = ''.join(c for c in texto_normalizado if unicodedata.category(c) != 'Mn')
-    return texto_sem_acentos
+Verificador de Palíndromo
+Descrição: Peça ao usuário para digitar uma palavra ou frase. O programa deve verificar se é um palíndromo (ou seja, se pode ser lido da mesma forma da esquerda para a direita e da direita para a esquerda, desconsiderando espaços e visões/minúsculas).
 
-def eh_palindromo(texto):
-    # Remove espaços, pontuação e converte para minúsculas
-    texto = texto.lower()
-    # Remove espaços e caracteres não alfanuméricos
-    texto_limpo = ''.join(c for c in texto if c.isalnum())
-    # Remove acentos (desafio extra)
-    texto_limpo = remover_acentos(texto_limpo)
-    # Verifica se é igual ao seu inverso
-    return texto_limpo == texto_limpo[::-1]
+Lista de Tarefas (To-Do List) Simples
+Descrição: Crie um programa que permita ao usuário:uma nova tarefa a uma lista Adicionar.Visualize todas as tarefas na lista.Remove uma tarefa da lista (pelo índice ou pelo nome).
 
-# Entrada do usuário
-entrada = input("Digite uma palavra ou frase para verificar se é um palíndromo: ")
+Gerador de Tabuada
+Descrição: Solicite ao usuário um número e, em seguida, exiba a tabuada de multiplicação desse número (geralmente de 1 a 10).
 
-# Verificação
-if eh_palindromo(entrada):
-    print(f'"{entrada}" é um palíndromo!')
-else:
-    print(f'"{entrada}" não é um palíndromo.')
+Contador de Vogais e Consoantes
+Descrição: Peça ao usuário para digitar uma frase. O programa deve contar e exibir o número de votos e o número de consoantes na frase.
