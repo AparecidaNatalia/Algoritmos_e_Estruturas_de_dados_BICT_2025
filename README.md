@@ -1,2 +1,28 @@
 # Algoritmos_e_Estrutura_de_dados_BICT_2025
-Exercício aula 01 - Revisão de Python
+import unicodedata
+
+def remover_acentos(texto):
+    # Normaliza o texto para a forma NFD (decomposição de caracteres acentuados)
+    texto_normalizado = unicodedata.normalize('NFD', texto)
+    # Remove os caracteres de acentuação (tudo que não for ASCII)
+    texto_sem_acentos = ''.join(c for c in texto_normalizado if unicodedata.category(c) != 'Mn')
+    return texto_sem_acentos
+
+def eh_palindromo(texto):
+    # Remove espaços, pontuação e converte para minúsculas
+    texto = texto.lower()
+    # Remove espaços e caracteres não alfanuméricos
+    texto_limpo = ''.join(c for c in texto if c.isalnum())
+    # Remove acentos (desafio extra)
+    texto_limpo = remover_acentos(texto_limpo)
+    # Verifica se é igual ao seu inverso
+    return texto_limpo == texto_limpo[::-1]
+
+# Entrada do usuário
+entrada = input("Digite uma palavra ou frase para verificar se é um palíndromo: ")
+
+# Verificação
+if eh_palindromo(entrada):
+    print(f'"{entrada}" é um palíndromo!')
+else:
+    print(f'"{entrada}" não é um palíndromo.')
