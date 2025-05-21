@@ -1,1 +1,1 @@
-# Algoritmos_e_Estruturas_de_dados_BICT_2025
+# Algoritmos_e_Estrutura_de_dados_BICT_2025
