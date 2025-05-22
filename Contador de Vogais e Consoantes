@@ -1,2 +1,34 @@
 # Algoritmos_e_Estrutura_de_dados_BICT_2025
 # Contador de Vogais e Consoantes
+def contar_letras():
+    frase = input("Digite uma frase: ").lower()
+    
+    vogais = 0
+    consoantes = 0
+    espacos = 0
+    outros = 0
+    
+    for caractere in frase:
+        if caractere in 'aeiouáéíóúâêîôûãõ':
+            vogais += 1
+        elif caractere.isalpha():  # Verifica se é letra mas não vogal
+            consoantes += 1
+        elif caractere.isspace():  # Verifica se é espaço
+            espacos += 1
+        else:  # Outros caracteres (pontuação, números, símbolos)
+            outros += 1
+    
+    print("\nResultado:")
+    print(f"Vogais: {vogais}")
+    print(f"Consoantes: {consoantes}")
+    print(f"Espaços: {espacos}")
+    print(f"Outros caracteres: {outros}")
+
+if __name__ == "__main__":
+    while True:
+        contar_letras()
+        
+        continuar = input("\nDeseja contar em outra frase? (S/N): ").strip().upper()
+        if continuar != 'S':
+            print("Programa encerrado. Até mais!")
+            break
