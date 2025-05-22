@@ -1,6 +1,6 @@
 # Algoritmos_e_Estrutura_de_dados_BICT_2025
 
-Exercício da aula 01 - Revisão de Python
+Exercícios da aula 01 - Revisão de Python
 
 - Verificador de Palíndromo
 Descrição: Peça ao usuário para digitar uma palavra ou frase. O programa deve verificar se é um palíndromo (ou seja, se pode ser lido da mesma forma da esquerda para a direita e da direita para a esquerda, desconsiderando espaços e visões/minúsculas).
