@@ -1,5 +1,6 @@
 # Algoritmos_e_Estrutura_de_dados_BICT_2025
 # Contador de Vogais e Consoantes
+
 def contar_letras():
     frase = input("Digite uma frase: ").lower()
     
